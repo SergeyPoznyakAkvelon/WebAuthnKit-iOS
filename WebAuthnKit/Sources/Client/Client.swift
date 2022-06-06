@@ -8,7 +8,6 @@
 
 import Foundation
 import PromiseKit
-import CryptoSwift
 import LocalAuthentication
 
 public enum ClientOperationType {

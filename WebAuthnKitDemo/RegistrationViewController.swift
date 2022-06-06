@@ -9,7 +9,6 @@
 import UIKit
 import WebAuthnKit
 import PromiseKit
-import CryptoSwift
 
 public enum FormError : Error {
     case missing(String)

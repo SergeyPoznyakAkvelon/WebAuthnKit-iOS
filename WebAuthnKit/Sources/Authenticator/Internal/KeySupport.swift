@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import CryptoSwift
-import EllipticCurveKeyPair
+import CryptoKit
+import KeychainAccess
 import LocalAuthentication
 
 public protocol KeySupport {
@@ -47,31 +47,37 @@ public class ECDSAKeySupport : KeySupport {
         self.selectedAlg = alg
     }
     
-    private func createPair(label: String) -> EllipticCurveKeyPair.Manager {
-        let publicAccessControl = EllipticCurveKeyPair.AccessControl(
-            protection: kSecAttrAccessibleAlwaysThisDeviceOnly,
-            flags:      []
-        )
-        let privateAccessControl = EllipticCurveKeyPair.AccessControl(
-            protection: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
-            flags:      [.userPresence, .privateKeyUsage]
-        )
-        let config = EllipticCurveKeyPair.Config(
-            publicLabel:             "\(label)/public",
-            privateLabel:            "\(label)/private",
-            operationPrompt:         "KeyPair",
-            publicKeyAccessControl:  publicAccessControl,
-            privateKeyAccessControl: privateAccessControl,
-            token:                   EllipticCurveKeyPair.Token.secureEnclaveIfAvailable
-        )
-        return EllipticCurveKeyPair.Manager(config: config)
+    private func getExistingKey(label: String) -> P256.Signing.PrivateKey? {
+        let keychain = KeychainAccess.Keychain(service: label)
+        
+        do {
+            if let privateKeyData = try keychain.getData("private") {
+                return try CryptoKit.P256.Signing.PrivateKey.init(rawRepresentation: privateKeyData.bytes)
+            }
+        } catch let err {
+            WAKLogger.debug("Failed to get key due to error \(err)")
+        }
+        
+        return nil
+    }
+    
+    private func createKey(label: String) throws -> P256.Signing.PrivateKey {
+        if let key = getExistingKey(label: label) {
+            return key
+        } else {
+            let keychain = KeychainAccess.Keychain(service: label)
+            let newKey = CryptoKit.P256.Signing.PrivateKey()
+            try keychain.set(newKey.rawRepresentation, key: "private")
+            
+            return newKey
+        }
     }
     
     public func sign(data: [UInt8], label: String, context: LAContext) -> Optional<[UInt8]> {
         do {
-            let pair = self.createPair(label: label)
-            let signature = try pair.sign(Data(bytes: data), hash: .sha256, context: context)
-            return signature.bytes
+            let key = try self.createKey(label: label)
+            let signature = try key.signature(for: Data(bytes: data))
+            return signature.rawRepresentation.bytes
         } catch let error {
             WAKLogger.debug("<ECDSAKeySupport> failed to sign: \(error)")
             return nil
@@ -81,8 +87,8 @@ public class ECDSAKeySupport : KeySupport {
     public func createKeyPair(label: String) -> Optional<COSEKey> {
         WAKLogger.debug("<ECDSAKeySupport> createKeyPair")
         do {
-            let pair = self.createPair(label: label)
-            let publicKey = try pair.publicKey().data().DER.bytes
+            let pair = try self.createKey(label: label)
+            let publicKey = pair.publicKey.derRepresentation.bytes
             if publicKey.count != 91 {
                 WAKLogger.debug("<ECDSAKeySupport> length of pubKey should be 91: \(publicKey.count)")
                 return nil

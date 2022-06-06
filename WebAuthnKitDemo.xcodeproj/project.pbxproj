@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,6 +50,8 @@
 		90D2EA7321A7B2F700032373 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2EA7221A7B2F700032373 /* ImageHelper.swift */; };
 		90D2EA7521A82ED800032373 /* CredentialSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2EA7421A82ED800032373 /* CredentialSource.swift */; };
 		90D2EA7721AA6FDD00032373 /* UserConsentUIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2EA7621AA6FDD00032373 /* UserConsentUIConfig.swift */; };
+		A57320D7284E2ED100CB4F3B /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57320D6284E2ED100CB4F3B /* CryptoKit.framework */; };
+		A57320D9284E3AD200CB4F3B /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57320D8284E3AD200CB4F3B /* Foundation+Extension.swift */; };
 		B91D11376957802B96D6EA6E /* Pods_WebAuthnKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2988A06B4CC546656EEBF2 /* Pods_WebAuthnKitDemo.framework */; };
 		E2142E8C6CCAF5C0CDE022F3 /* Pods_WebAuthnKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF3E155C7228F98215A96DE /* Pods_WebAuthnKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -147,6 +149,8 @@
 		90D2EA7421A82ED800032373 /* CredentialSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialSource.swift; sourceTree = "<group>"; };
 		90D2EA7621AA6FDD00032373 /* UserConsentUIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConsentUIConfig.swift; sourceTree = "<group>"; };
 		9FF3E155C7228F98215A96DE /* Pods_WebAuthnKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebAuthnKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A57320D6284E2ED100CB4F3B /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/CryptoKit.framework; sourceTree = DEVELOPER_DIR; };
+		A57320D8284E3AD200CB4F3B /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
 		B3B78E73DB43D2411A1E78C3 /* Pods-WebAuthnKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebAuthnKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebAuthnKitTests/Pods-WebAuthnKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7FCC422FB36271D9963F89C /* Pods-WebAuthnKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebAuthnKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebAuthnKitDemo/Pods-WebAuthnKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57320D7284E2ED100CB4F3B /* CryptoKit.framework in Frameworks */,
 				3B57E257E4B9B7C0AF05A39E /* Pods_WebAuthnKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +189,7 @@
 		78AD1ABB20F28963F8636521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A57320D6284E2ED100CB4F3B /* CryptoKit.framework */,
 				5D2988A06B4CC546656EEBF2 /* Pods_WebAuthnKitDemo.framework */,
 				30AF97DF9D9805807720A9E7 /* Pods_WebAuthnKitDemoTests.framework */,
 				8296ABA3FE6DEC114151D036 /* Pods_WebAuthnKitDemoUITests.framework */,
@@ -285,6 +291,7 @@
 				90D2EA4921A4446C00032373 /* Authenticator */,
 				90D2EA3421A4429E00032373 /* Format */,
 				90D2EA3221A4423200032373 /* WAKLogger.swift */,
+				A57320D8284E3AD200CB4F3B /* Foundation+Extension.swift */,
 				90D2EA3021A4422D00032373 /* WAKTypes.swift */,
 			);
 			path = Sources;
@@ -623,6 +630,7 @@
 				9030FFA921A6A0CC00FB8878 /* KeySelectionViewController.swift in Sources */,
 				90D2EA4F21A4449000032373 /* Attestation.swift in Sources */,
 				90D2EA4E21A4449000032373 /* AuthenticatorData.swift in Sources */,
+				A57320D9284E3AD200CB4F3B /* Foundation+Extension.swift in Sources */,
 				90D2EA5921A4452E00032373 /* UserConsentUI.swift in Sources */,
 				90D2EA5721A4452E00032373 /* CredentialStore.swift in Sources */,
 				90D2EA5F21A4453C00032373 /* InternalAuthenticatorMakeCredentialSession.swift in Sources */,
@@ -807,6 +815,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64Y46T8HF5;
 				INFOPLIST_FILE = WebAuthnKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -827,6 +836,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64Y46T8HF5;
 				INFOPLIST_FILE = WebAuthnKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -852,6 +862,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = WebAuthnKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -882,6 +893,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = WebAuthnKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

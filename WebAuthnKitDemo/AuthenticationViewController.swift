@@ -9,7 +9,6 @@
 import UIKit
 import WebAuthnKit
 import PromiseKit
-import CryptoSwift
 
 class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     

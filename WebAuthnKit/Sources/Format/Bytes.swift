@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension String {
+    @inlinable
+    public var bytes: Array<UInt8> {
+        data(using: String.Encoding.utf8, allowLossyConversion: true)?.bytes ?? Array(utf8)
+    }
+}
+
 public class Bytes {
     
     public static func fromHex(_ value: String) -> [UInt8] {
@@ -15,7 +22,7 @@ public class Bytes {
     }
     
     public static func fromString(_ value: String) -> [UInt8] {
-        return value.bytes // This is CryptoSwift method
+        return value.bytes
     }
 
     public static func fromUInt64(_ value: UInt64) -> [UInt8] {

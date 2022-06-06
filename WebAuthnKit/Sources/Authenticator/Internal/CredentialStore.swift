@@ -8,7 +8,6 @@
 
 import Foundation
 import KeychainAccess
-import CryptoSwift
 
 public protocol CredentialStore {
     func lookupCredentialSource(rpId: String, credentialId: [UInt8]) -> Optional<PublicKeyCredentialSource>
