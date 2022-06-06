@@ -810,7 +810,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 613AFAB626CD02E5B4BF4087 /* Pods-WebAuthnKitDemo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64Y46T8HF5;
@@ -831,7 +831,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7FCC422FB36271D9963F89C /* Pods-WebAuthnKitDemo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64Y46T8HF5;
