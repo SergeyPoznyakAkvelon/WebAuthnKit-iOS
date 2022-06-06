@@ -29,12 +29,8 @@ public class KeychainCredentialStore : CredentialStore {
         let keychain = Keychain(service: rpId)
         return keychain.allKeys().compactMap {
                 if let result = try? keychain.getData($0) {
-                    if let bytes = result?.bytes {
-                        return PublicKeyCredentialSource.fromCBOR(bytes)
-                    } else {
-                        WAKLogger.debug("<KeychainStore> not found data for key:\($0)")
-                        return nil
-                    }
+                    let bytes = result.bytes
+                    return PublicKeyCredentialSource.fromCBOR(bytes)
                 } else {
                     WAKLogger.debug("<KeychainStore> failed to load data for key:\($0)")
                    return nil
@@ -61,12 +57,8 @@ public class KeychainCredentialStore : CredentialStore {
             let keychain = Keychain(service: rpId)
 
             if let result = try? keychain.getData(handle) {
-                if let bytes = result?.bytes {
-                    return PublicKeyCredentialSource.fromCBOR(bytes)
-                } else {
-                    WAKLogger.debug("<KeychainStore> not found data for key:\(handle)")
-                    return nil
-                }
+                let bytes = result.bytes
+                return PublicKeyCredentialSource.fromCBOR(bytes)
             } else {
                 WAKLogger.debug("<KeychainStore> failed to load data for key:\(handle)")
                 return nil
@@ -98,7 +90,7 @@ public class KeychainCredentialStore : CredentialStore {
 
         if let bytes = cred.toCBOR() {
             do {
-                try keychain.set(Data(bytes: bytes), key: handle)
+                try keychain.set(Data(bytes), key: handle)
                 return true
             } catch let error {
                 WAKLogger.debug("<KeychainStore> failed to save credential-source: \(error)")

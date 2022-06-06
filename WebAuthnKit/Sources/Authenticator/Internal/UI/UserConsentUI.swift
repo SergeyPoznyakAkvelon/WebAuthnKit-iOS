@@ -95,6 +95,13 @@ public class UserConsentUI: UserConsentViewControllerDelegate {
         }
 
     }
+    
+    private func createDefaultKeyName(_ user: PublicKeyCredentialUserEntity) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        let dateString = formatter.string(from: Date())
+        return "\(user.name) (\(dateString))"
+    }
 
     internal func requestUserConsent(
         rpEntity:            PublicKeyCredentialRpEntity,
@@ -107,27 +114,8 @@ public class UserConsentUI: UserConsentViewControllerDelegate {
         
         self.willStartUserInteraction()
         
-        return Promise<String> { resolver in
-            
-            DispatchQueue.main.async {
-            
-                let vc = KeyRegistrationViewController(
-                    resolver:          resolver,
-                    config:            self.config,
-                    user:              userEntity,
-                    rp:                rpEntity
-                )
-                
-                vc.delegate = self
-                
-                self.showBackground()
-                
-                self.viewController.present(vc, animated: true, completion: nil)
-                
-            }
-            
-        }.then { (keyName: String) -> Promise<String> in
-
+        return firstly { () -> Promise<String> in
+            let keyName = createDefaultKeyName(userEntity)
             if let reason = self.cancelled {
 
                 self.didFinishUserInteraction()

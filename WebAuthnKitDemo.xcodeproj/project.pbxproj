@@ -11,7 +11,6 @@
 		9030FFA021A5369600FB8878 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030FF9F21A5369600FB8878 /* RegistrationViewController.swift */; };
 		9030FFA221A5377100FB8878 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030FFA121A5377100FB8878 /* AuthenticationViewController.swift */; };
 		9030FFA421A53A7D00FB8878 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030FFA321A53A7D00FB8878 /* ResultViewController.swift */; };
-		9030FFA721A6A04F00FB8878 /* KeyRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030FFA621A6A04F00FB8878 /* KeyRegistrationViewController.swift */; };
 		9030FFA921A6A0CC00FB8878 /* KeySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030FFA821A6A0CC00FB8878 /* KeySelectionViewController.swift */; };
 		90D2E9DE21A424DD00032373 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2E9DD21A424DD00032373 /* AppDelegate.swift */; };
 		90D2E9E021A424DD00032373 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2E9DF21A424DD00032373 /* ViewController.swift */; };
@@ -106,7 +105,6 @@
 		9030FF9F21A5369600FB8878 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		9030FFA121A5377100FB8878 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		9030FFA321A53A7D00FB8878 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		9030FFA621A6A04F00FB8878 /* KeyRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyRegistrationViewController.swift; sourceTree = "<group>"; };
 		9030FFA821A6A0CC00FB8878 /* KeySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySelectionViewController.swift; sourceTree = "<group>"; };
 		90D2E9DA21A424DD00032373 /* WebAuthnKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebAuthnKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D2E9DD21A424DD00032373 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				90D2EA5421A4452E00032373 /* UserConsentUI.swift */,
-				9030FFA621A6A04F00FB8878 /* KeyRegistrationViewController.swift */,
 				9030FFA821A6A0CC00FB8878 /* KeySelectionViewController.swift */,
 				90D2EA7621AA6FDD00032373 /* UserConsentUIConfig.swift */,
 			);
@@ -623,7 +620,6 @@
 				90D2EA3D21A442AE00032373 /* JSON.swift in Sources */,
 				90D2EA6921A4488200032373 /* SelfAttestation.swift in Sources */,
 				90D2EA3321A4423200032373 /* WAKLogger.swift in Sources */,
-				9030FFA721A6A04F00FB8878 /* KeyRegistrationViewController.swift in Sources */,
 				90D2EA4121A442AE00032373 /* Base64.swift in Sources */,
 				90D2EA7721AA6FDD00032373 /* UserConsentUIConfig.swift in Sources */,
 				90D2EA4021A442AE00032373 /* CBOR.swift in Sources */,

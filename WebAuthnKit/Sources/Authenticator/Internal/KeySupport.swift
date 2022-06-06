@@ -31,7 +31,6 @@ public class KeySupportChooser {
                 return ECDSAKeySupport(alg: .es256)
             default:
                 WAKLogger.debug("<KeySupportChooser> currently this algorithm not supported")
-                return nil
             }
         }
 
@@ -76,7 +75,7 @@ public class ECDSAKeySupport : KeySupport {
     public func sign(data: [UInt8], label: String, context: LAContext) -> Optional<[UInt8]> {
         do {
             let key = try self.createKey(label: label)
-            let signature = try key.signature(for: Data(bytes: data))
+            let signature = try key.signature(for: Data(data))
             return signature.rawRepresentation.bytes
         } catch let error {
             WAKLogger.debug("<ECDSAKeySupport> failed to sign: \(error)")
