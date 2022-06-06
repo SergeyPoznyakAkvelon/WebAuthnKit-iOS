@@ -40,6 +40,7 @@ public enum COSEAlgorithmIdentifier: Int, Codable {
     case rs384 = -258
     case rs512 = -259
     case es256 =   -7
+    case eddsa =   -8
     case es384 =  -35
     case es512 =  -36
     case ed256 = -260
@@ -56,6 +57,8 @@ public enum COSEAlgorithmIdentifier: Int, Codable {
             return self.rs512
         case self.es256.rawValue:
             return self.es256
+        case self.es256.rawValue:
+            return self.eddsa
         case self.es384.rawValue:
             return self.es384
         case self.es512.rawValue:
@@ -77,6 +80,8 @@ public enum COSEAlgorithmIdentifier: Int, Codable {
 
         switch (lhs, rhs) {
         case (.es256, .es256):
+            return true
+        case (.eddsa, .eddsa):
             return true
         case (.es384, .es384):
             return true
