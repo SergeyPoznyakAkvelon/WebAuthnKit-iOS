@@ -218,7 +218,7 @@ public class WebAuthnClient: ClientOperationDelegate {
     private func generateClientData(
         type:      CollectedClientDataType,
         challenge: String
-        ) -> (CollectedClientData, String, [UInt8]) {
+        ) -> (CollectedClientData, [UInt8], [UInt8]) {
 
         WAKLogger.debug("<WebAuthnClient> generateClientData")
 
@@ -231,8 +231,8 @@ public class WebAuthnClient: ClientOperationDelegate {
         )
 
         let clientDataJSONData = try! JSONEncoder().encode(clientData)
-        let clientDataJSON = String(data: clientDataJSONData, encoding: .utf8)!
-        let clientDataHash = clientDataJSON.bytes.sha256()
+        let clientDataJSON = String(data: clientDataJSONData, encoding: .utf8)!.bytes
+        let clientDataHash = clientDataJSON.sha256()
 
         return (clientData, clientDataJSON, clientDataHash)
     }

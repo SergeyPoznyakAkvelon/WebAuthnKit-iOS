@@ -55,12 +55,12 @@ public enum UserVerificationRequirement: String, Codable {
 
 public protocol AuthenticatorResponse : Codable {}
 public struct AuthenticatorAttestationResponse : AuthenticatorResponse {
-    public var clientDataJSON: String
+    public var clientDataJSON: [UInt8]
     public var attestationObject: [UInt8]
 }
 
 public struct AuthenticatorAssertionResponse: AuthenticatorResponse {
-    public var clientDataJSON: String
+    public var clientDataJSON: [UInt8]
     public var authenticatorData: [UInt8]
     public var signature: [UInt8]
     public var userHandle: [UInt8]?

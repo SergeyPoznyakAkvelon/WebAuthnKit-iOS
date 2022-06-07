@@ -141,7 +141,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             print("credentialId: " + credential.id)
             print("rawId: " + Base64.encodeBase64URL(credential.rawId))
             print("attestationObject: " + Base64.encodeBase64URL(credential.response.attestationObject))
-            print("clientDataJSON: " + Base64.encodeBase64URL(credential.response.clientDataJSON.data(using: .utf8)!))
+            print("clientDataJSON: " + Base64.encodeBase64URL(credential.response.clientDataJSON))
             print("==========================================")
             self.showResult(credential)
 
@@ -286,7 +286,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
         let rawId             = credential.rawId.toHexString()
         let credId            = credential.id
-        let clientDataJSON    = credential.response.clientDataJSON
+        let clientDataJSON    = Base64.encodeBase64URL(credential.response.clientDataJSON)
         let attestationObject = Base64.encodeBase64URL(credential.response.attestationObject)
 
         let vc = ResultViewController(

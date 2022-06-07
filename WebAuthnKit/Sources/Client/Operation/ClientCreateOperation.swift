@@ -19,7 +19,7 @@ public class ClientCreateOperation: AuthenticatorMakeCredentialSessionDelegate {
     private let options:        PublicKeyCredentialCreationOptions
     private let rpId:           String
     private let clientData:     CollectedClientData
-    private let clientDataJSON: String
+    private let clientDataJSON: [UInt8]
     private let clientDataHash: [UInt8]
     private let lifetimeTimer:  UInt64
     
@@ -35,7 +35,7 @@ public class ClientCreateOperation: AuthenticatorMakeCredentialSessionDelegate {
         rpId:           String,
         session:        AuthenticatorMakeCredentialSession,
         clientData:     CollectedClientData,
-        clientDataJSON: String,
+        clientDataJSON: [UInt8],
         clientDataHash: [UInt8],
         lifetimeTimer:  UInt64
     ) {

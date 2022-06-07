@@ -90,7 +90,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
             print("authenticatorData: " + Base64.encodeBase64URL(assertion.response.authenticatorData))
             print("signature: " + Base64.encodeBase64URL(assertion.response.signature))
             print("userHandle: " + Base64.encodeBase64URL(assertion.response.userHandle!))
-            print("clientDataJSON: " + Base64.encodeBase64URL(assertion.response.clientDataJSON.data(using: .utf8)!))
+            print("clientDataJSON: " + Base64.encodeBase64URL(assertion.response.clientDataJSON))
             print("==========================================")
 
             self.showResult(assertion)
@@ -210,7 +210,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         let vc = ResultViewController(
             rawId:             result.rawId.toHexString(),
             credId:            result.id,
-            clientDataJSON:    result.response.clientDataJSON,
+            clientDataJSON:    Base64.encodeBase64URL(result.response.clientDataJSON),
             authenticatorData: Base64.encodeBase64URL(result.response.authenticatorData),
             signature:         result.response.signature.toHexString(),
             userHandle:        userName
