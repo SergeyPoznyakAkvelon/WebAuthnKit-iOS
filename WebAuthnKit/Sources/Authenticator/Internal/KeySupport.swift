@@ -76,7 +76,7 @@ public class ECDSAKeySupport : KeySupport {
         do {
             let key = try self.createKey(label: label)
             let signature = try key.signature(for: Data(data))
-            return signature.rawRepresentation.bytes
+            return signature.derRepresentation.bytes
         } catch let error {
             WAKLogger.debug("<ECDSAKeySupport> failed to sign: \(error)")
             return nil
