@@ -64,7 +64,7 @@ public class ClientGetOperation: AuthenticatorGetAssertionSessionDelegate {
                 }
                 
                 let transports: [AuthenticatorTransport] =
-                    self.options.allowCredentials.flatMap { $0.transports }
+                    self.options.allowCredentials.flatMap { $0.transports ?? [] }
                 
                 if !transports.isEmpty
                     && !transports.contains(self.session.transport) {
@@ -241,7 +241,7 @@ public class ClientGetOperation: AuthenticatorGetAssertionSessionDelegate {
 
             let allowCredentialDescriptorList = self.options.allowCredentials.filter {
                 // TODO more check for id
-                $0.transports.contains(session.transport)
+                $0.transports?.contains(session.transport) ?? false
             }
 
             if (allowCredentialDescriptorList.isEmpty) {

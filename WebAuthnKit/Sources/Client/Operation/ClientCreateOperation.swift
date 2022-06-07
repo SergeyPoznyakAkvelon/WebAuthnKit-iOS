@@ -236,7 +236,7 @@ public class ClientCreateOperation: AuthenticatorMakeCredentialSessionDelegate {
 
         let excludeCredentialDescriptorList =
             self.options.excludeCredentials.filter {descriptor in
-                if descriptor.transports.contains(session.transport) {
+                if descriptor.transports?.contains(session.transport) ?? false {
                     return false
                 } else {
                     return true
